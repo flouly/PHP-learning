@@ -5,7 +5,7 @@
 
 include('fonction.inc.php');
 
-if(isset($_GET['fruit'])){ //les $_GET sont prexeistant, ce sont les indices que l on verifie
+if(isset($_GET['fruit'])){ //les $_GET sont preexeistant, ce sont les indices que l on verifie
 
 echo 'Fruit :' .$_GET['fruit'] . '<br>';
 

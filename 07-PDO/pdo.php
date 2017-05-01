@@ -16,7 +16,7 @@ $pdo = new PDO('mysql:host=localhost;dbname=entreprise', 'root', 'root', array(P
 //         DRIVER + serveur + nom de la base de donnees
 //          pseudo du SGBD
             mdp du SGBD
-            ooptipns option 1 pour generer l ffichage des erreurs, option 2 = commande a executer lors de lsa connexion au serveur qui definit la jeu de caracterres des echanges avec la BDD
+            options option 1 pour generer l ffichage des erreurs, option 2 = commande a executer lors de lsa connexion au serveur qui definit le jeu de caracteres des echanges avec la BDD
 */
 
 print_r($pdo);
@@ -63,14 +63,14 @@ $result = $pdo->query("SELECT * FROM employes WHERE prenom = 'laura'");
 echo '<pre>'; print_r($result); echo '</pre>';
 echo '<pre>'; print_r(get_class_methods($result)); echo '</pre>'; //on voit les nouvelles methoddes de Pdoststement
 
-// $result constitue le resultat de LA requete  sous une forme inexploitable directement: ilfaut donc le transformer par la methode fetch()
+// $result constitue le resultat de LA requete  sous une forme inexploitable directement: il faut donc le transformer par la methode fetch()
 
 $employe = $result->fetch(PDO::FETCH_ASSOC);// la methode permet  de transformer  l objet  $result en un ARRAY  associatif exploitable indexe avec le nom des champs de la requete
 
 echo '<pre>';  print_r($employe);  echo '</pre>';
 echo "Bonjour je suis  $employe[prenom] $employe[nom] $employe[service] <br>"; // les ' ' tombent avec les""
 
-// ou encore farie un fetch avec l une des requetes suivantes
+// ou encore faire un fetch avec l une des requetes suivantes
 $result = $pdo->query("SELECT * FROM employes WHERE prenom = 'laura'");
 $employe = $result->fetch(PDO::FETCH_NUM); //pour otenir un array indexe numeriquement
 echo '<pre>';  print_r($employe);  echo '</pre>';
@@ -83,11 +83,11 @@ echo '<pre>';  print_r($employe);  echo '</pre>';
 
 // ------------
 $result = $pdo->query("SELECT * FROM employes WHERE prenom = 'laura'");
-$employe = $result->fetch(PDO::FETCH_OBJ);// RETOURNRE un nouvel objet avec les noms de champs attributs(propriets) public
+$employe = $result->fetch(PDO::FETCH_OBJ);// RETOURNE un nouvel objet avec les noms de champs attributs(proprietes) public
 echo '<pre>';  print_r($employe);  echo '</pre>';
 echo $employe->prenom;
 
-// Attention il faut choisir l un des fectch que vous voulez executer aur un jeu de resultat , vous ne pouvez pas faire plusieur fetch sur le memee resultat n en contenant qu une seule. en effet cette  methode deplace  un curseur de lecture sur le resultat suivant contenu dans le jeu de resultats: ainsi quand il ny en a q un , on sort du jeu
+// Attention il faut choisir l un des fectch que vous voulez executer sur un jeu de resultat , vous ne pouvez pas faire plusieur fetch sur le meme resultat n en contenant qu une seule. en effet cette  methode deplace  un curseur de lecture sur le resultat suivant contenu dans le jeu de resultats: ainsi quand il n y en a q un , on sort du jeu
 
 // Aficher le service de l employe Laura:
 
@@ -102,7 +102,7 @@ echo '<pre>';  print_r($employe);  echo '</pre>';
 echo $employe[0];
 
 // ****************************
-// 04. while er fetch_assoc
+// 04. while et fetch_assoc
 // ****************************
 
 echo '<h1>04.while et fetch_assoc</h1>';
@@ -111,7 +111,7 @@ $resultat = $pdo->query("SELECT * FROM employes ");
 
 echo ' Nombres d employes : ' . $resultat->rowCount() . '<br>';
 
-while ($contenu = $resultat->fetch(PDO::FETCH_ASSOC)) { //fetch retourne la ligne suivante du jeu de resultat en array asssociatif. la boucle while permet de faire aavnce le curseur dansle jeu de resulTAt et s arrete a la fin des resultats
+while ($contenu = $resultat->fetch(PDO::FETCH_ASSOC)) { //fetch retourne la ligne suivante du jeu de resultat en array asssociatif. la boucle while permet de faire avance le curseur dans le jeu de resultat et s arrete a la fin des resultats
      //echo '<pre>';  print_r($contenu);  echo '</pre>';//$contenu est un array  associatif qui contient les donnees de chaque ligne du jeu de resultats.le nom des indices correspondent aux nom des champs
 
      echo $contenu['id_employes'] . '<br>';
@@ -220,7 +220,7 @@ $nom = 'sennard';
 $resultat = $pdo->prepare("SELECT * FROM employes WHERE nom = :nom "); // on prepare la requete sans l execute, avec un  marqueur nominatif  ecrit :nom
 
 // ON donne une valeur au marqueur :nom
-$resultat->bindParam(':nom', $nom, PDO::PARAM_STR); //je lie le marqueur :nom a la variable $nom. Si on change le contenu de la variable. ls valeur du marqueur changera  automatiquement si onfait plusieurs execute
+$resultat->bindParam(':nom', $nom, PDO::PARAM_STR); //je lie le marqueur :nom a la variable $nom. Si on change le contenu de la variable. ls valeur du marqueur changera  automatiquement si on fait plusieurs execute
 
 //On execute la requete
 $resultat->execute();
@@ -282,10 +282,13 @@ $pdo = new PDO('mysql:host=localhost;dbname=bibliotheque', 'root', 'root', array
 // execution
 $resultat->execute(); // on obtient un objet de la  classe PDOStatement
 
+
+
 // le fetch
 echo '<ul>';
 while ($livre = $resultat->fetch(PDO::FETCH_ASSOC)){
-    echo " <li>$donnees[titre]</li>"; //le titre est passe de colonne de table de base de donnees a un indice d un array associatif
+    //echo '<pre>'; print_r($livre); echo '</pre>';
+    echo " <li>$livre[titre]</li>"; //le titre est passe de colonne de table de base de donnees a un indice d un array associatif
 }
 echo '</ul>';
 
@@ -324,7 +327,7 @@ echo '<h1>12. Points complementaires</h1>';
 // ________________
 echo '<br><strong>Le marqueur "?" </strong><br>';
 
-$resultat = $pdo->prepare("SELECT * FROM employes WHERE nom =? AND prenom = ?"); // les variables remplsace par le marqueur "?"
+$resultat = $pdo->prepare("SELECT * FROM employes WHERE nom =? AND prenom = ?"); // les variables remplace par le marqueur "?"
 
 $resultat->execute(array('durand','damien'));// durand va remplacer le premier  ? et damien le second
 
@@ -345,7 +348,7 @@ echo '<br><strong>Afficher une erreur de requete SQL </strong><br>';
 
 $resultat = $pdo->prepare("SELECT * FROM azerty WHERE nom = 'durand' ");
 $resultat->execute();
-echo '<pre>';   print_r($resultat->errorInfo()); echo '</pre>';//errorInfo est une methode de la classe PDOStatement at qui fournit des infos  sur l erreur SQL on trouve l erreur a lindice 2  se larray retourne par cette methode
+echo '<pre>';   print_r($resultat->errorInfo()); echo '</pre>';//errorInfo est une methode de la classe PDOStatement at qui fournit des infos  sur l erreur SQL on trouve l erreur a lindice 2  de l array retourne par cette methode
 
 // ****************************
 // 13. Mysqli

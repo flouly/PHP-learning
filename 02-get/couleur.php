@@ -3,11 +3,13 @@
 // Exercice
 
 /*
-Dans le fichier listeFruits.php : creer 3 liens banane. kiwi et cerise Quand on clicke sur l es liens. passe le nom du fruit et afficher sa couleur
+Dans le fichier listeFruits.php : creer 3 liens banane. kiwi et cerise Quand on clicke sur les liens. passe le nom du fruit et afficher sa couleur
 
-notez que vous ne passez pas la cou;eur dans l url mais vus la deduisez dans couleur.php
+notez que vous ne passez pas la couleur dans l url mais vous la deduisez dans couleur.php
 */
 print_r($_GET);
+
+echo '<br>';
 
 if (isset($_GET['fruit'])) {
     echo 'Fruit :' .$_GET['fruit'] . '<br>';
@@ -23,6 +25,6 @@ if (isset($_GET['fruit'])) {
     }
 
 } else{
-    echo'Aucun fruit selectionnes';
+    echo'Aucun fruit selectionne';
 }
 ?>

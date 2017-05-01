@@ -1,5 +1,5 @@
 <?php
-// crer le formulaire indique au tableau recuperer les donnees et les aficher dans l a meme page
+// creer le formulaire indique au tableau recuperer les donnees et les afficher dans la meme page
 
 print_r($_POST);
 
@@ -21,6 +21,6 @@ if(!empty($_POST)){
     <input type="text" id="codepostal" name="codepostal"><br>
 
     <label for="adresse">Adresse</label>
-    <textarea  id="prenom" name="adresse"></textarea><br>
+    <textarea  id="adresse" name="adresse"></textarea><br>
     <input type="submit" name="validation" value="validation">
 </form>

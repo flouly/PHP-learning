@@ -21,15 +21,15 @@ $pdo = new PDO('mysql:host=localhost;dbname=dialogue', 'root', 'root', array(PDO
 
 if(!empty($_POST)){
 
-    //Traitement contre les failles  XSS(Cross Site Script) (injections JS) OU LES injections CSS; on parle d echappement des dommees recu
+    //Traitement contre les failles  XSS(Cross Site Script) (injections JS) OU LES injections CSS; on parle d echappement des donnees recu
     //on va injection dans le champs message :
     //<style>body{display:none}</style>
 
-    //inection de code JS :
+    //injection de code JS :
     //<script>while(true){alert('vous etes bloques....');}</script> 
 
     $_POST['pseudo'] = htmlspecialchars($_POST['pseudo'], ENT_QUOTES);
-    $_POST['message'] = htmlspecialchars($_POST['message'], ENT_QUOTES); //htmlspecialchars convertit les caracteres speciaux en entite HTML (< devient &lt par ex), ce qui pemet de rendre innofensif les balises HTML .  ENT_QUOTES PERmet d ajouter ala liste de caracteres convertis
+    $_POST['message'] = htmlspecialchars($_POST['message'], ENT_QUOTES); //htmlspecialchars convertit les caracteres speciaux en entite HTML (< devient &lt par ex), ce qui pemet de rendre innofensif les balises HTML .  ENT_QUOTES PERmet d ajouter a la liste de caracteres convertis
 
     //En complement:
     $_POST['message'] = strip_tags($_POST['message']); // permet de supprimer toutes les balises HTML CONTENU
@@ -39,7 +39,7 @@ if(!empty($_POST)){
     //1- premiere requete non protege par les injections et qui n accepte pas les apostrophes
     //$r = $pdo->query("INSERT INTO commentaire(pseudo, date_enregistrement, message) VALUES('$_POST[pseudo]', NOW(), '$_POST[message]')"); // pas de '' dans $_POST car deja entoure de ''
 
-    //2- nousallons faire une injection SQL : dans champs message, saisir ok'); DELETE FROM commentaire; (
+    //2- nous allons faire une injection SQL : dans champs message, saisir ok'); DELETE FROM commentaire; (
         //Pour se premunir des inJections SQL ET  pouvoir mettre des appostrophes ,nous pouvons faire  un requete preparee
         $stmt = $pdo->prepare("INSERT INTO commentaire (pseudo, date_enregistrement, message) VALUES(:pseudo, NOW(), :message)");
 

@@ -18,13 +18,13 @@ echo '1- la session apres remplissage : ';
 echo '<pre>'; print_r($_SESSION); echo '<pre>';
 
 // vider une partie de la session en cours
-unset($_SESSION['mdp']); // nous pouvons supprimer une partie dela session e]avec unset
+unset($_SESSION['mdp']); // nous pouvons supprimer une partie de la session avec unset
 
 echo '2- la session apres suppression de mdp : ';
 echo '<pre>'; print_r($_SESSION); echo '<pre>';
 
 // Supprimer entierement la session
-// session_destroy(); // d abord vue par l interpreteur puis execution a la fin du script; vverifieer que le fichier a disparu dans temp
+//session_destroy(); // d abord vue par l interpreteur puis execution a la fin du script; verifier que le fichier a disparu dans temp
 
 echo '2- la session apres suppression totale : ';
 echo '<pre>'; print_r($_SESSION); echo '<pre>';

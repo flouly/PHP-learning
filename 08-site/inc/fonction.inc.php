@@ -1,8 +1,8 @@
 <?php
-//************************Finctions membres**********************************
+//************************Fonctions membres**********************************
 
 function internautEstConnecte(){ //isConnected
-    //Cette fonction indique si l internauteo est connecte: si la session membre est defini c est que le membre est passe par la page connexion avec le bon mdp
+    //Cette fonction indique si l internaute est connecte: si la session membre est defini c est que le membre est passe par la page connexion avec le bon mdp
     if(isset($_SESSION['membre'])){
         return true;
     } else {
@@ -33,17 +33,17 @@ function executeRequete($req, $param = array()) { //$param est un arrray vide pa
     }
 
     //requete preparee:
-    global $pdo; //$pdl globale dans un espace local
+    global $pdo; //$pdo globale dans un espace local
     $r = $pdo->prepare($req);
-    $succes = $r->execute($param); //on execute la requete on lui passant  l arrau $param aui permet d associer chaqie marqueur a sa valeur
+    $succes = $r->execute($param); //on execute la requete on lui passant  l array $param qui permet d associer chaque marqueur a sa valeur
 
 
     //Traitement erreur SQL
-    if(!$succes){ //il ya une erreur sur la requete si $succes esr false
+    if(!$succes){ //il y a une erreur sur la requete si $succes est false
 
-        die('Erreur sur la requete SQL: ' . $r->errorInfo()[2]); //die arrete le script et affiche un messge;  errorInfo renvoie un array avec un message d erreur stocker un indice 2
+        die('Erreur sur la requete SQL: ' . $r->errorInfo()[2]); //die arrete le script et affiche un message;  errorInfo renvoie un array avec un message d erreur stocker un indice 2
     }
 
-    return $r;  //retourne un objet PSOStatement qui contient le resultat de la requetes
+    return $r;  //retourne un objet PSOStatement qui contient le resultat de la requete
 
 } //Fin de la function

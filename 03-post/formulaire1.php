@@ -4,15 +4,15 @@
 // **********************************
 //$_POST est une superglobale et donc un array disponible dans tout le contexte du script
 
-// C est une methide qui pertmrt de recuperer des informations issues d un formulaire
+// C est une methode qui permet de recuperer des informations issues d un formulaire
 
-// Un formulaire esr obligatoi emefa dans des balises form, aves la designation des attributs method (pour get o u post) et action (qui indique le fichier  de destination des donnees deu formulaire).il contient un bouton  envoie
+// Un formulaire est obligatoirement dans des balises form, aves la designation des attributs method (pour get ou post) et action (qui indique le fichier  de destination des donnees du formulaire).il contient un bouton  envoie
 
 
-// les names constituent les indices du ARRAY   $_POST
+// les names constituent les indices du ARRAY  $_POST
 print_r($_POST);
 
-if(!empty($_POST)){ // not empty siginifie que l array  $_POSTn est  pa s vide , autrement dit que la formulaire a ete poste. Il peut cependant  avoair fete poste avec des champs vide :lea valeurs  de l array  $_POST  dosnt vides mais il ya bien les  indices 'prenom ' et 'description'.
+if(!empty($_POST)){ // not empty siginifie que l array  $_POST n est  pas vide , autrement dit que la formulaire a ete poste. Il peut cependant  avoir ete poste avec des champs vides :les valeurs  de l array  $_POST  sont vides mais il y a bien les  indices 'prenom ' et 'description'.
   echo 'Prenom : ' . $_POST['prenom'] . '<br>';
 echo 'Description : ' . $_POST['description'] . '<br>';
 }

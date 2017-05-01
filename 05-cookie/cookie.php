@@ -3,17 +3,17 @@
 // Les cookies
 // ***********************
 
-/*un cookie un petit fichier (4 ko max) depose oar le serveur sur ke poste de l internaute et qui peut contenir des informations coud forme de texte. Les cookies sint autom atiquement renvoyes au serveur web par le navigateur lorsque l internaute  navigue dans les pages concerneses par es les cookies
+/*un cookie un petit fichier (4 ko max) depose par le serveur sur le poste de l internaute et qui peut contenir des informations sous forme de texte. Les cookies sont automatiquement renvoyes au serveur web par le navigateur lorsque l internaute  navigue dans les pages concernees par  les cookies
 
-PHP peut tres facilemenr recuperer les donnees contenues dans un cookie : sse informations sont stockes dams la super globae $_COOKIE
+PHP peut tres facilemenr recuperer les donnees contenues dans un cookie : ses informations sont stockes dams la super globae $_COOKIE
 
 Ne pas stocker d informations sensibles
 */
 
-// Nous allons sticker lalangue choisie
+// Nous allons stocker la langue choisie
 
 // 1 affectation de la langue a la variable $langue
- if (isset($_GET['langue'])){ //si un langue  est passee dans l url c est que nous avons clique suur une langue
+ if (isset($_GET['langue'])){ //si une langue  est passee dans l url c est que nous avons clique sur une langue
     $langue = $_GET['langue'];
  } elseif (isset($_COOKIE['langue'])){ // on entre dans elseif si un cookie appele langue  a ete envoye par le client
 
@@ -46,7 +46,7 @@ switch($langue){
 
 <ul>
     <li><a href="?langue=fr">Francais</a></li>
-    <li><a href="?langue=es">Espagonl</a></li>
+    <li><a href="?langue=es">Espagnol</a></li>
     <li><a href="?langue=en">Englais</a></li>
     <li><a href="?langue=it">Italien</a></li>
 </ul>

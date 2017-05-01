@@ -54,7 +54,7 @@
 
                             }
 
-                            echo ' <li>  <a  href="'.  RACINE_SITE  .'pannier.php">Pannier</a></li>';
+                            echo ' <li>  <a  href="'.  RACINE_SITE  .'panier.php">Panier</a></li>';
 
                             //Menu admin:
                             if(internautEstConnecteEtAdmin()) {

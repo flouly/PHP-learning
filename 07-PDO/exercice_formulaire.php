@@ -15,12 +15,10 @@ $pdo = new PDO('mysql:host=localhost;dbname=entreprise', 'root', 'root', array(P
 if(!empty($_POST)){ // si le formulaire est poste, il y a des indices dans $_POST, IL n est donc pas  vide
 
 
-
-
         // Controle du FORMULAIRE :
-        if(strlen($_POST['prenom']) < 3 || strlen($_POST['prenom']) > 20) $message .= '<div>Le prenom dlit comporter  3 carateres</div>';
+        if(strlen($_POST['prenom']) < 3 || strlen($_POST['prenom']) > 20) $message .= '<div>Le prenom doit comporter  3 carateres</div>';
 
-         if(strlen($_POST['nom']) < 3 || strlen($_POST['nom']) > 20) $message .= '<div>Le prenom dlit comporter  3 carateres</div>';
+         if(strlen($_POST['nom']) < 3 || strlen($_POST['nom']) > 20) $message .= '<div>Le prenom doit comporter  3 carateres</div>';
 
          if($_POST['sexe'] != 'm' && $_POST['sexe'] != 'f') $message .= '<div>le sexe n\'est pas  correcte </div>';
 

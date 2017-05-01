@@ -1,5 +1,5 @@
 <?php
-// Contexte : souvent sur les sites bancaires, vous etes automatiquement au bout se 10 minutes
+// Contexte : souvent sur les sites bancaires, vous etes deconnectez automatiquement au bout se 10 minutes
 
 session_start(); // on cree une session
 
@@ -14,7 +14,7 @@ echo '<pre>'; print_r($_SESSION); echo '<pre>';
     }
 
  } else{ //on entre dans ce else la premiere fois pour remplir la session
-     $_SESSION['temps'] = time(); //stamptime exorime en seconde
+     $_SESSION['temps'] = time(); //stamptime exprime en seconde
      $_SESSION['limit'] = 10; //  en seconde
      echo '<hr> vous etes connectez <hr>';
  }

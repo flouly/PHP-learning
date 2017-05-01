@@ -206,7 +206,7 @@ echo $var3 . '<br>';
 // -----------------
 echo '<h2> Conditions switch </h2>';
 // ------------------
-// Dans le switch ci-dessous les "cases" representent les cas differents danslesquels on peut potiellemmemt tomber
+// Dans le switch ci-dessous les "cases" representent les cas differents dans lesquels on peut potentiellement tomber
 $couleur = 'jaune';
 
 switch($couleur){
@@ -487,7 +487,7 @@ echo '<table border = "1"><tr>';
 for ($i = 0; $i < 10; $i++){
     echo "<td>$i</td>";
 }
-echo '</table></tr>';
+echo '</tr></table>';
 
 echo '<br>';
 // ------------------------------2
@@ -546,6 +546,7 @@ $tab[] = 'Portugal';
 
 print_r($tab);
 
+echo '<br>';
 echo $tab[1];
 
 echo '<br>';
@@ -575,7 +576,7 @@ print_r($couleur2) ;
 // --------------------------------
 echo '<h2> La boucle foreach pour parcourir les arrays</h2>';
 // -------------------------------
-// La boucle est un moyen pour passer en revue un tableau. Elle fonvtionneuniquemrnt ssur les arrays et es objets. Et elle a l avantage detre automatique s arretant quand il n y a plus d elements
+// La boucle est un moyen pour passer en revue un tableau. Elle fonctionne uniquement sur les arrays et les objets. Et elle a l avantage d etre automatique s arretant quand il n y a plus d elements
 foreach($tab as $valeur){ //La variable $valeur recupere a chaque tour de boucle les valeurs  qui sont parcourues dans l array $tab
     echo $valeur . '<br>';
 }
@@ -600,17 +601,19 @@ echo '<pre>';  print_r($tab_multi);  echo '<pre>';
 
 // Acceder a la valeur Julien
 echo $tab_multi[0]['prenom'] .'<br>';
+echo '<br>';
 
-// Parcourir le tableau multidimensionnel avec un boucle for :
+// Parcourir le tableau multidimensionnel avec une boucle for :
 for ($i = 0; $i < count($tab_multi); $i++){
     echo $tab_multi[$i]['prenom'] .'<br>';
 }
-
+echo '<br>';
 // Afficher les prenoms avec une boucle foreach
 
 foreach($tab_multi as $valeur){
     echo $valeur['prenom'] . '<br>';
 };
+echo '<br>';
 
 foreach($tab_multi as $indice => $valeur){
     echo $tab_multi [$indice]['prenom'] . '<br>';
@@ -637,17 +640,17 @@ require_once('exemple.inc.php');//on verifie si le fichier n est pas deja inclu*
 echo '<h2> Introduction aux objets</h2>';
 // -------------------------------
 
-// Un objet rdt un autre type de donnees Un objet est issu d une classequi possede des attributs(ou propriete)  et des methodes
+// Un objet rdt un autre type de donnees Un objet est issu d une classe qui possede des attributs(ou propriete)  et des methodes
 
 // l objet a partier dune classe peut acceder a ces attribut et ces methodes
 
 // example avec un personnge de type 'Etudiant'
 class Etudiant {
-    public $prenom = 'Julien'; // public l element wet accessible partout
+    public $prenom = 'Julien'; // public l element est accessible partout
 
     public $age = 25;
 
-    public function pays() { //methide appele pays
+    public function pays() { //methode appelee pays
         return 'France';
     }
 }
@@ -656,7 +659,7 @@ $objet = new Etudiant(); // New permet de creer une nouvelle instance de la clas
 
 echo '<pre>'; print_r($objet); echo '<pre>';
 
-// afficher le prenom de l etuf=diant $objet
+// afficher le prenom de l etudiant $objet
 
 echo $objet->prenom .'<br>';
 

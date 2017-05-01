@@ -2,7 +2,7 @@
 
 //-------------------------TRAITEMENT------------------------------
 require_once('inc/init.inc.php');
-$inscription = false; // variable qui permet de savoir si le  membre est est inscrit pour neapas reafficher ;e formulaire d inscriptiom\n
+$inscription = false; // variable qui permet de savoir si le  membre  est inscrit pour ne pas reafficher le formulaire d inscription
 
 //Traitement du post
 if(!empty($_POST)){
@@ -44,11 +44,11 @@ if(!empty($_POST)){
 
     //Validation du code postal avec une expression reguliere
 
-    if(!preg_match('#^[0-9]{5}$#', $_POST['code_postal'])){ //preg_match retourne true si le string en deuxieme argument corespond a l expressiom reguliere 
+    if(!preg_match('#^[0-9]{5}$#', $_POST['code_postal'])){ //preg_match retourne true si le string en deuxieme argument corespond a l expression reguliere 
         $contenu .= '<div class="bg_danger">Le code postal n\' est pas valide</div>';
     }
     /*expression reguliere
-    # au debut er a la fin
+    # au debut et a la fin
     ^ expressiopn debute par ce qui suit
     $     "         se termine
     []intervale des caracteres autorises   ici 0 a 9
@@ -69,7 +69,7 @@ if(!empty($_POST)){
         } else {
             //si le pseudo est unique on peut faire l inscription en BDD :
 
-            $_POST['mdp'] = md5($_POST['mdp']);// encryption. il faudra le faire sur la  page connextion pour comparer 2 mots cryptes
+            $_POST['mdp'] = md5($_POST['mdp']);// encryption. il faudra le faire sur la  page connexion pour comparer 2 mots cryptes
         
 
 

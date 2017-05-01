@@ -10,7 +10,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'deconnexion'){
     session_destroy();
 }
 
-//intternaute deja connecte
+//internaute deja connecte
 if(internautEstConnecte()) {
     header('location:profil.php'); // si internaute deja connecte on le redirige sur son profil
 }
@@ -29,7 +29,7 @@ if(!empty($_POST)){
         $contenu .= '<div class="bg_danger">Le mot de passe est requis</div>';
     }
 
-    //si le formulaire est correcte on contrele les identifiants
+    //si le formulaire est correcte on controle les identifiants
     if(empty($contenu)){
 
         $mdp = md5($_POST['mdp']);// on crypte le mdp pour le comparer avec c elui de la base

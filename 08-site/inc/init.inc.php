@@ -1,14 +1,14 @@
 <?php
 
-/*Il sera inclu a tout les fichiers du site, fonction sera lui meme inclu dna init.inc
+/*Il sera inclu a tout les fichiers du site, fonction sera lui meme inclu dans init.inc
 
--Connection ala BDD
--creation ou ouver t ure de session
+-Connexion a la BDD
+-creation ou ouverture de session
 -definir une constante pour oe chemin du site
 -et inclusion du fichier fonction.inc.php
 
 */
-// connexition a la BDD
+// connexion a la BDD
 $pdo = new PDO('mysql:host=localhost;dbname=site', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_WARNING, PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'));
 
 //Session
