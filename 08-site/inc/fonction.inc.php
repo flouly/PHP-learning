@@ -47,3 +47,39 @@ function executeRequete($req, $param = array()) { //$param est un arrray vide pa
     return $r;  //retourne un objet PSOStatement qui contient le resultat de la requete
 
 } //Fin de la function
+
+
+//*********************Fonction du panier****************************
+function creationDuPanier() {
+    if(!isset($_SESSION['panier'])) {
+        // si n existe pas le panier  dans SESSION  on le cree
+        $_SESSION['panier'] = array(); // le panier est un array vide
+        $_SESSION['panier']['titre'] = array();
+        $_SESSION['panier']['id_produit'] = array();
+        $_SESSION['panier']['quantite'] = array();
+        $_SESSION['panier']['prix'] = array();
+
+        
+    }
+}
+
+function ajouterProduitDansPanier($titre, $id_produit, $quantite, $prix){//ces argument sont en provenance de panier.php
+
+        creationDuPanier(); //pour creer la structure si elle n existe pas
+
+        $position_produit = array_search($id_produit, $_SESSION['panier']['id_produit']); //array_search retourne un chifre si l'id_produit est present dans l array $SESSION['Panier'] qui correspond a l'indice auquel se situe l element. sinon retourne false
+
+        if($position_produit === false){
+          //si le produit n est pas dans le panier on l y ajoute
+          $_SESSION['panier']['titre'][] =  $titre; //les crocher vide pour ajouter l element a la fin de l array
+          $_SESSION['panier']['id_produit'][] =  $id_produit;
+          $_SESSION['panier']['quantite'][] =  $quantite;
+          $_SESSION['panier']['prix'][] =  $prix;
+        } else {
+            //si ;e produit existe on ajoute la quantite nouvelle a la quantite deja presente dans le panier
+            $_SESSION['panier']['quantite'][$position_produit] += $quantite;
+        }
+ 
+}
+
+

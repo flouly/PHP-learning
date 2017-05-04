@@ -13,7 +13,7 @@ if(!internautEstConnecteEtAdmin()){
 //7-suppression d un produit
 if(isset($_GET['action']) && $_GET['action'] == 'suppression' && isset($_GET['id_produit'])) {
 
-    //on selectionne en base la photo pour pouvoir supppreonef lse fichier correspondant
+    //on selectionne en base la photo pour pouvoir supppreonef le fichier correspondant
     $resultat = executeRequete("SELECT photo FROM produit WHERE id_produit = :id_produit", array(':id_produit' => $_GET['id_produit']));
 
     $produit_a_supprimer = $resultat->fetch(PDO::FETCH_ASSOC);
@@ -35,7 +35,7 @@ if(isset($_GET['action']) && $_GET['action'] == 'suppression' && isset($_GET['id
 
 
 //4-Enregistrement du produit en BDD
-if($_POST){ //equivlent a !(empty($_POST)) Car si le $_POST est rempli il vaut TRUE = formulaire poste
+if($_POST){ //equivalent a !(empty($_POST)) Car si le $_POST est rempli il vaut TRUE = formulaire poste
 
         //il faudrait mettre les controles du formulaire
 
@@ -47,8 +47,6 @@ if($_POST){ //equivlent a !(empty($_POST)) Car si le $_POST est rempli il vaut T
             $photo_bdd = $_POST['photo_actuelle'];
         }
 
-
-
         //5-traitement de la photo:
         //echo '<pre>'; print_r($_FILES); echo '</pre>';
         if(!empty($_FILES['photo']['name'])){// une image a ete uploadee; qd $_FILES est creer il fait une copie de la photo et la met dans temp
@@ -56,7 +54,7 @@ if($_POST){ //equivlent a !(empty($_POST)) Car si le $_POST est rempli il vaut T
             //on constitue un nom unique pour le fichier photo:
             $nom_photo = $_POST['reference'] . '_' . $_FILES['photo']['name'];
             //On constistue le chemin de la photo enregistre en BDD
-            $photo_bdd = RACINE_SITE . 'photo/' . $nom_photo; // on obtioent ici le nom et le chenim de la photo depuis la racine du site
+            $photo_bdd = RACINE_SITE . 'photo/' . $nom_photo; // on obtient ici le nom et le chenim de la photo depuis la racine du site
             //on obient le chemin mais pas le fichier physique, on met ce dernier sur le serveur
             //on constitue le chemin absolu complet de la photo depuis la  racine serveur
             $Photo_dossier = $_SERVER['DOCUMENT_ROOT'] . $photo_bdd;
@@ -69,19 +67,19 @@ if($_POST){ //equivlent a !(empty($_POST)) Car si le $_POST est rempli il vaut T
         executeRequete("REPLACE INTO Produit(id_produit, reference, categorie, titre, description, couleur, taille, public, photo, prix, stock) VALUES (:id_produit, :reference, :categorie, :titre, :description, :couleur, :taille, :public, :photo_bdd, :prix, :stock)", array('id_produit' => $_POST['id_produit'], 'reference' => $_POST['reference'] , 'categorie' => $_POST['categorie'] ,'titre' => $_POST['titre'], 'description' => $_POST['description'], 'couleur' => $_POST['couleur'], 'taille' => $_POST['taille'], 'public' => $_POST['public'],  ':photo_bdd' => $photo_bdd, 'prix' => $_POST['prix'], 'stock' => $_POST['stock']));
 
         $contenu .= '<div class"bg-succes">Le produit a ete enregitre</div>';
-        $_GET['action'] = 'affichage'; // on met la valeur 'affichage' dans $_GET['action'] pour afficher  automatiquement  la table HTML  DES produits plus loin dans le script (point 6)
+        $_GET['action'] = 'affichage'; // on met la valeur 'affichage' dans $_GET['action'] pour afficher  automatiquement  la table HTML  DES produits a la suite de la validation du produit; voir plus loin dans le script d'affichage (point 6)
 
 }
 //2- les liens "affichages" et "ajout du produit":
 $contenu .= '<ul class="nav nav-tabs">
-                <li> <a href="?action=affichage">Affichage des produits</a>   </li>
-                <li> <a href="?action=ajout">Ajout d\'un produit</a>   </li>
+                <li> <a href="?action=affichage">Affichage des produits</a></li>
+                <li> <a href="?action=ajout">Ajout d\'un produit</a></li>
             </ul>';
 
 
-//6-Affichage des produitd dans le back-office:
+//6-Affichage des produits dans le back-office:
 
-if(isset($_GET['action']) && $_GET['action'] == 'affichage'  || !isset($_GET['action'])) {//4_get contioent aicahage pu que l on arrive sur lapage pour la premiere fois ($_GET['action'] nlexiste pas
+if(isset($_GET['action']) && $_GET['action'] == 'affichage'  || !isset($_GET['action'])) {//$_get contient affichage pour que l on arrive sur la page. Pour la premiere fois ($_GET['action'] n existe pas
 
 
     $resultat = executeRequete("SELECT * FROM produit");
@@ -102,8 +100,8 @@ if(isset($_GET['action']) && $_GET['action'] == 'affichage'  || !isset($_GET['ac
 
         
         }
-    $contenu .= '<th>Action</th>';// on ajoute une colonne action  
-    $contenu .= '</tr>';
+        $contenu .= '<th>Action</th>';// on ajoute une colonne action  
+        $contenu .= '</tr>';
     //Affichage des lignes
 
     while($ligne = $resultat->fetch(PDO::FETCH_ASSOC)) {
@@ -116,19 +114,17 @@ if(isset($_GET['action']) && $_GET['action'] == 'affichage'  || !isset($_GET['ac
                         $contenu .= '<td>' . $data . '</td>';
                     }
             }
-    $contenu .= '<td>
-                    <a href="?action=modification&id_produit='. $ligne['id_produit'] .'">modifier</a>/
-                    <a href="?action=suppression&id_produit='. $ligne['id_produit'] .'" onclick="return(confirm(\'etes vous certain de vouloir supprimer ce produits?\')) ";   
-                    >supprimer</a>
-                </td>';
-     $contenu .= '</tr>';
+        $contenu .= '<td>
+                        <a href="?action=modification&id_produit='. $ligne['id_produit'] .'">modifier</a>/
+                        <a href="?action=suppression&id_produit='. $ligne['id_produit'] .'" onclick="return(confirm(\'Etes vous certain de vouloir supprimer ce produits?\')) ";   
+                        >supprimer</a>
+                    </td>';
+        $contenu .= '</tr>';
 
     }
         
     $contenu .= '</table>';
 }
-
-
 
 //----------------------Affichage----------
 require_once('../inc/haut.inc.php');
@@ -137,9 +133,9 @@ echo $contenu;
 //3 formulaire html
 if(isset($_GET['action']) && ($_GET['action'] == 'ajout'  || $_GET['action'] == 'modification')) :
 
-    //3-formulaire de modification avec presaisie des infos dans le formulaire
+    //8-formulaire de modification avec presaisie des infos dans le formulaire
     if(isset($_GET['id_produit'])){
-        //pour preremplor le formulaire on requete  en BDD les infos du produit passe dans l url
+        //pour preremplir le formulaire on requete  en BDD les infos du produit passe dans l url
         $resultat = executeRequete("SELECT * FROM produit WHERE id_produit = :id_produit", array(':id_produit' => $_GET['id_produit']));
 
         $produit_actuel = $resultat->fetch(PDO::FETCH_ASSOC);
@@ -150,7 +146,7 @@ if(isset($_GET['action']) && ($_GET['action'] == 'ajout'  || $_GET['action'] == 
 <form method="post" enctype="multipart/form-data" action=""> 
 <!--"multipart/form-data"  permet d uploader unlfichier et de generer une superglobale $_FILES-->
     <input type="hidden" id="id_produit"  name="id_produit" value="<?php echo $produit_actuel['id_produit'] ?? 0; ?>" >
-    <!--champ cache qui receptionne l id_produit necessaire lors de la modification d in produit existant-->
+    <!--champ cache qui receptionne l id_produit necessaire lors de la modification d un produit existant-->
 
     <label for="reference">Reference</label><br>
     <input type="text" id="reference"  name="reference" value="<?php echo $produit_actuel['reference'] ?? 0; ?>" ><br><br>
@@ -182,7 +178,7 @@ if(isset($_GET['action']) && ($_GET['action'] == 'ajout'  || $_GET['action'] == 
      <input type="radio" name="public" value="mixte" <?php if(isset($produit_actuel['public']) && $produit_actuel['public'] == 'mixte') echo 'checked'; ?>> Mixte<br><br>
 
      <label for="photo">Photo</label><br><br>
-     <input type="file" id="photo" name="photo"><br><br><!--coupler avec l'attribut  enctype="multipart/form-data" de la blise <form>, le type "file" permet d'uploader un fichier-->
+     <input type="file" id="photo" name="photo"><br><br><!--coupler avec l'attribut  enctype="multipart/form-data" de la balise <form>, le type "file" permet d'uploader un fichier-->
 
      <!--9 Modification de la photo-->
      <?php
@@ -194,10 +190,7 @@ if(isset($_GET['action']) && ($_GET['action'] == 'ajout'  || $_GET['action'] == 
         echo '<input type="hidden"   name="photo_actuelle" value="'. $produit_actuel['photo'] .'" >';
         //ce champs renseigne le $_POST['photo_actuelle']      qui va en  base quand on soumet le formulaire de modification. si on soumet le formulaire de modification . si on ne rempli pas le formulaire ici le champ photo de la base est remplace par un vide  ce qui efface  le chemin de la photo.
     }
-
-
      ?>
-
 
      <label for="prix">Prix</label><br><br>
      <input type="text" id="prix" name="prix" value="<?php echo $produit_actuel['prix'] ?? 0; ?>" > <br><br>
