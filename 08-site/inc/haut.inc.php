@@ -54,7 +54,7 @@
 
                             }
 
-                            echo ' <li>  <a  href="'.  RACINE_SITE  .'panier.php">Panier</a></li>';
+                            echo ' <li>  <a  href="'.  RACINE_SITE  .'panier.php">Panier   ' .affichagePanier (). '</a></li>';
 
                             //Menu admin:
                             if(internautEstConnecteEtAdmin()) {
@@ -74,7 +74,7 @@
         </div><!--/container--> 
     </nav>  
 
-    <div class="container" style="min-height: 80vh; padding-top:100px;">
+    <div class="container" style="min-height: 80vh; padding-top:120px;">
     <!--ici contenue specifique de chaque page -->
     
 

@@ -33,9 +33,21 @@ $contenu .= '<div><h3>Voici vos informations de profil</div></h3>';
 
 $contenu .= '</div>';
 
+//exercice :
+/*1 afficher le suivi des commandes du membre (s il n y en ) dans une liste ul li : id_commande,date et etat de la commande. s il n y en a pas, vous afficher "aucune commande en cours"
+*/
+$resultat = executeRequete("SELECT id_commande, date_enregistrement, etat  FROM  commande  WHERE  id_membre = :id_membre", array(':id_membre' => $_SESSION['membre']['id_membre']));
+
+ $suivi = $resultat->fetch(PDO::FETCH_ASSOC);
+
+
+while($suivi = $resultat->fetch(PDO::FETCH_ASSOC)){
+
+//echo '<pre>'; print_r($suivi); echo '</pre>';
 
 
 
+}
 
 
 
