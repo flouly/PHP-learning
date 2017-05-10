@@ -73,7 +73,7 @@ if(isset($_GET['id_produit'])){//si existe l indice id_produit dans l url
            $contenu .= '</div>';
 
 } else {
-        // si l indece d_produit pas dans l url
+        // si l indice id_produit pas dans l url
         header('location:boutique.php');
         exit();
 }

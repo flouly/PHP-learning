@@ -348,7 +348,7 @@ echo '<br><strong>Afficher une erreur de requete SQL </strong><br>';
 
 $resultat = $pdo->prepare("SELECT * FROM azerty WHERE nom = 'durand' ");
 $resultat->execute();
-echo '<pre>';   print_r($resultat->errorInfo()); echo '</pre>';//errorInfo est une methode de la classe PDOStatement at qui fournit des infos  sur l erreur SQL on trouve l erreur a lindice 2  de l array retourne par cette methode
+echo '<pre>';   print_r($resultat->errorInfo()); echo '</pre>';//errorInfo est une methode de la classe PDOStatement at qui fournit des infos  sur l erreur SQL on trouve l erreur a l indice 2  de l array retourne par cette methode
 
 // ****************************
 // 13. Mysqli

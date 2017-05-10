@@ -40,7 +40,7 @@ $resultat = executeRequete("SELECT id_commande, date_enregistrement, etat  FROM 
 
 /* pas de rentrer de donnees de facon direct de la part de l internaute donc pas besoin de requete prepare:
 $id_membre = $_SESSION['membre']['id_membre']
-$resultat = executeRequete("SELECT id_commande, date_enregistrement, etat  FROM  commande  WHERE  id_membre = '$id_membre'");// dans une requete sql on met les variables entre quotes.Pour memoire ai on y met un array, celui ci perd ses quotes autour de lindice.a savoir :on ne peut pas le faire avec un array multidimensionnel
+$resultat = executeRequete("SELECT id_commande, date_enregistrement, etat  FROM  commande  WHERE  id_membre = '$id_membre'");// dans une requete sql on met les variables entre quotes.Pour memoire si on y met un array, celui ci perd ses quotes autour de lindice.a savoir :on ne peut pas le faire avec un array multidimensionnel
  */
 if( $resultat->rowCount() != 0) {
         $contenu .= '<ul> Etat des commandes : ';

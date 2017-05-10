@@ -48,39 +48,6 @@ if(isset($_GET['categorie']) && $_GET['categorie'] != 'all'){
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 //----------------------Affichage----------
 require_once('inc/haut.inc.php');
 ?>

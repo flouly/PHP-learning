@@ -289,7 +289,7 @@ echo '<br>';
 // Transformer 2015-05-23 en 23-05-2015 :
 echo strftime('%d-%m-%Y', strtotime('2015-05-23'));
 
-// Cette methode de transformation est limitee dans le temps (2038)
+// Cette methode de transformation est limitee dans le temps (1970 a 2038)
 
 // Autre methode
 $date = new Datetime('11-04-2017');

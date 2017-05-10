@@ -34,3 +34,17 @@ function afficheDate($date, $format) {
             return  'Pas le bon formmat';
         }
 }
+
+echo '<br><br>';
+
+$dat = date('h:m a');
+echo $dat;
+
+echo '<br><br>';
+
+$ins = false;
+if(!$ins){
+    echo 'good';
+} else {
+   echo 'ni';
+}

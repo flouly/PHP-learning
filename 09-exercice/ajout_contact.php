@@ -113,9 +113,9 @@ if(!empty($_POST)){
 			<label for="telephone">Telephone</label><br>
 			<input type="text" id="telephone" name="telephone"><br><br>
 		
-			<label for="">Annee</label>
+			<label for="year">Annee</label>
 			<?php
-			echo '<select  name="date_rencontre" id="year">';
+			echo '<select  name="annee_rencontre" id="year">';
 			$option = date('Y') - 100;
 			while ($option <= date('Y')){
 
